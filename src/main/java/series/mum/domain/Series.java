@@ -3,6 +3,7 @@ package series.mum.domain;
 import actor.mum.domain.Actor;
 
 import javax.persistence.*;
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -21,6 +22,10 @@ public class Series {
     @JoinColumn(name = "seriesId")
     private List<Actor> cast;
     private String director;
+
+    public Series(){
+        cast = new ArrayList<>();
+    }
 
     public int getId() {
         return id;
@@ -50,8 +55,8 @@ public class Series {
         return cast;
     }
 
-    public void setCast(List<Actor> cast) {
-        this.cast = cast;
+    public void addActor(Actor actor) {
+        this.cast.add(actor);
     }
 
     public String getDirector() {

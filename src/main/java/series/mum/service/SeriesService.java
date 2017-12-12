@@ -12,4 +12,5 @@ import java.util.List;
 public interface SeriesService {
 
     Page<Series> showTVSeries();
+    Series save(Series series);
 }

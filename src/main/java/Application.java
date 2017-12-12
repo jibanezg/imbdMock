@@ -12,12 +12,14 @@ import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
 import series.mum.domain.*;
 
 import javax.sql.DataSource;
+import java.util.HashMap;
+import java.util.Map;
 
 
 /**
  * Created by Grimg on 12/11/2017.
  */
-@SpringBootApplication(scanBasePackages = "series.mum.Controller")
+@SpringBootApplication(scanBasePackages ={ "series.mum.*"})
 @EnableJpaRepositories
 public class Application {
 
@@ -41,7 +43,12 @@ public class Application {
     @Bean
     public LocalContainerEntityManagerFactoryBean entityManagerFactory(EntityManagerFactoryBuilder builder){
 
-        return builder.dataSource(getDataSource()).packages(Series.class,Actor.class).persistenceUnit("series").build();
+        Map<String,String> properties = new HashMap<>();
+        properties.put("hibernate.hbm2ddl.auto","create");
+
+        return builder.dataSource(getDataSource())
+                .properties(properties)
+                .packages(Series.class,Actor.class).persistenceUnit("series").build();
 
     }
 

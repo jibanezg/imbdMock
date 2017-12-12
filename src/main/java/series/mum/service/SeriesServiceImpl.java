@@ -24,4 +24,9 @@ public class SeriesServiceImpl implements SeriesService {
         PageRequest pageRequest = new PageRequest(0,20);
         return seriesDAO.findAll(pageRequest);
     }
+
+    @Override
+    public Series save(Series series) {
+        return seriesDAO.save(series);
+    }
 }
