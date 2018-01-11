@@ -1,3 +1,3 @@
 # imbdMock
 
-Small project app create to mock a piece of functionality similar to imbd
+Small project app created to mock a piece of functionality similar to imbd
